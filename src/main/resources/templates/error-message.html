@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+
+        <div class="container-fluid" th:fragment="error-message(formObject)">
+            <span th:object="${__${formObject}__}">
+                <div th:if="${#fields.hasGlobalErrors() || errorMessage != null}">
+                    <p/>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title text-danger">We encountered one or more errors.</h3>
+                            <p class="error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">A global error message</p>
+                            <div th:if="${errorMessage}">
+                                <p class="error" th:text="${errorMessage}">Some other error message</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p/>
+                </div>
+            </span>
+        </div>
+
+        <div class="container-fluid" th:fragment="error-message-single">
+            <div th:if="${errorMessage}">
+                <p/>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-danger">We encountered an error.</h3>
+                        <p th:text="${errorMessage}">Some useful error message</p>
+                    </div>
+                </div>
+                <p/>
+            </div>
+        </div>
+
+        <div class="container-fluid" th:fragment="error-message-list">
+            <div th:if="${errorMessages}">
+                <p/>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-danger">We encountered one or more errors.</h3>
+                        <p th:each="errorMessage: ${errorMessages}" th:text="${errorMessage}">Foo</p>
+                        <p>
+                            <a href="#" onclick="history.back()">Go Back</a>
+                        </p>
+                    </div>
+                </div>
+                <p/>
+            </div>
+        </div>
+    </body>
+
+</html>

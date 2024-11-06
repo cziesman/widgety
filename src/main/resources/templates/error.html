@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <span th:replace="fragment-head :: common-head(title='Error!')"></span>
+
+    <body>
+        <div>
+            <h1>Something went wrong!</h1>
+            <h2>Stand by! Our engineers are on it!</h2>
+            <div class="container-fluid">
+                <div th:replace="error-message :: error-message-list"></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<span th:replace="fragment-head :: common-head(title='Update Widget')"></span>
+
+<body>
+<div class="container">
+    <h3 id="title"> Update Widget</h3>
+    <div>
+        <form action="#" method="post" th:action="@{/web/widget/{id}(id=${widget.id})}"              th:object="${widget}">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div th:replace="error-message :: error-message('widget')"></div>
+                    </div>
+                    <input id="id" th:field="*{id}" type="hidden"/>
+                    <div class="form-group">
+                        <label class="col-form-label" for="name">Name</label>
+                        <input class="form-control" id="name" th:field="*{name}" type="text"/>
+                        <span class="text-danger" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" for="description">Description</label>
+                        <input class="form-control" id="description" th:field="*{description}" type="text"/>
+                        <span class="text-danger" th:errors="*{description}" th:if="${#fields.hasErrors('description')}"></span>
+                    </div>
+                    <div class="form-group float-right">
+                        <input class="btn btn-primary" type="submit" value="Update" th:id="update-widget"/>
+                        <a class="btn btn-secondary" th:href="@{/web/widgets}">Cancel</a>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <p></p>
+        </form>
+    </div>
+</div>
+<span th:replace="fragment-javascript :: common"></span>
+</body>
+
+</html>

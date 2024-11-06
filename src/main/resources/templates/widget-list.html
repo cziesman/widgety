@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<span th:replace="fragment-head :: common-head-datatables(title='Widgets')"></span>
+
+<body>
+<div class="container">
+    <h3 id="title">Widgets</h3>
+    <div class="width-100">
+        <div class="card">
+            <div class="card-body">
+                <p class="my-2">
+                    <a class="btn btn-primary" th:href="@{/web/widget}" th:id="add-widget"> <i class="fas fa-widget-plus ml-2"></i>&nbsp;Add Widget</a>
+                </p>
+                <div class="container-fluid">
+                    <div th:replace="error-message :: error-message-single"></div>
+                </div>
+                <div class="width-100">
+                    <table class="table table-striped table-bordered" id="widget" width="100%">
+                        <thead>
+                        <tr>
+                            <th width="24%">Name</th>
+                            <th width="60%">Description</th>
+                            <th class="text-center" width="8%">Update</th>
+                            <th class="text-center" width="8%">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="widget : ${widgets}">
+                            <td th:id="'name-' + ${widget.id}" th:text="${widget.name}"></td>
+                            <td th:id="'description-' + ${widget.id}"  th:text="${widget.description}"></td>
+                            <td class="text-center">
+                                <a class="btn btn-primary" th:href="@{/web/widget/{id}(id=${widget.id})}"
+                                   th:id="'update-' + ${widget.id}">
+                                    <i class="fas fa-user-edit ml-2"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-primary confirmation-alert"
+                                   th:id="'delete-' + ${widget.id}"
+                                   th:href="@{/web/widget/delete/{id}(id=${widget.id})}"><i
+                                        class="fas fa-user-times ml-2"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<span th:replace="fragment-javascript :: common-datatables"></span>
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#widget').DataTable( {
+                    stateSave: true,
+                    pageLength: 25
+                } );
+            } );
+
+</script>
+</body>
+</html>

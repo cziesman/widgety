@@ -1,0 +1,77 @@
+.vertical-nav {
+  min-width: 15rem;
+  width: 15rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+  overflow: auto;
+}
+
+.page-content {
+  width: calc(100% - 15rem);
+  margin-left: 15rem;
+  transition: all 0.4s;
+}
+
+.sub-table {
+  width: calc(100% - 4rem);
+  margin-left: 4rem;
+}
+
+.nav-link[data-toggle].collapsed:after {
+  content: "  ▾";
+}
+
+.nav-link[data-toggle]:not(.collapsed):after {
+  content: " ▴";
+}
+
+.long-message {
+  width: 100%;
+  top: 0; left: 0; right: 0; bottom: 0;
+  resize: none;
+}
+
+.ui-datepicker-calendar {
+  display: none;
+}
+
+.caret-off::after {
+  display: none;
+}
+
+.width-100 { 
+  width:100%
+}
+
+.width-75 { 
+  width:75%
+}
+
+.width-50 { 
+  width:50%
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+  padding: 4px 10px;
+  vertical-align: middle;
+}
+
+.hyphenate {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.table-borderless td,
+.table-borderless th {
+  border: 0;
+}
+
+.text-right { 
+    text-align: right; 
+}
